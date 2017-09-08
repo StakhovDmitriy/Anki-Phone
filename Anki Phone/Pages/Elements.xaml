@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Anki.Pages.ElementsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anki.Pages"
+    xmlns:tables="using:Anki.Tables"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <MenuFlyout x:Key="ElementMenuFlyout">
+            <MenuFlyoutItem Text="Изменить" Icon = "Edit" Click="Element_Info"/>
+            <MenuFlyoutItem Text="Disabled" IsEnabled="False"/>
+        </MenuFlyout>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="Back"  FontSize="20" Margin="5"/>
+            <TextBlock x:Name="TypeLabel" Grid.Row="0" Text="Темы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="5" />
+            <Button x:Name="Forward" Content="Уроки"  FontSize="20" Margin="5" Click="Forward_Click"/>
+        </StackPanel>
+        <!--Кнопка Закрыть-->
+        <Button x:Name="Close"  Grid.Row="0" FontFamily="Segoe MDL2 Assets" Content="&#xE106;"
+                Width="50" Height="50" Background="Transparent" HorizontalAlignment="Right" Click="Close_Click"/>
+        <!--Элементы-->
+        <ListView x:Name="list"  Grid.Row="1"  ItemClick="list_ItemClick"  IsItemClickEnabled="True"/>
+        <ListView x:Name="LessonList"  Grid.Row="1"  ItemClick="list_ItemClick"  IsItemClickEnabled="True" Visibility="Collapsed"/>
+        <ListView x:Name="UnitList"  Grid.Row="1"  ItemClick="list_ItemClick"  IsItemClickEnabled="True" Visibility="Collapsed"/>
+        <ListView x:Name="ItemList"  Grid.Row="1"  ItemClick="list_ItemClick"  IsItemClickEnabled="True" Visibility="Collapsed"/>
+        <ListView x:Name="TestList"  Grid.Row="1"  ItemClick="list_ItemClick"  IsItemClickEnabled="True" Visibility="Collapsed"/>
+        <CommandBar Grid.Row="2">
+            <AppBarButton Icon="Add" Label="Добавить" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Grid>
+</Page>

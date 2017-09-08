@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="Anki.Pages.StudyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anki.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <MenuFlyout x:Key="ElementMenuFlyout">
+            <MenuFlyoutItem Text="Изменить" Icon = "Edit" Click = "Edit"/>
+            <MenuFlyoutItem Text="Disabled" IsEnabled = "False"/>
+        </MenuFlyout>
+    </Page.Resources>
+    
+    <SplitView x:Name="NavigationSplitView">
+        <SplitView.Pane>
+            <StackPanel>
+                <Button Content ="Change"  Click="HamburgerMenuReverse"/>
+                <ListView SelectionMode = "None" IsItemClickEnabled = "True" ItemClick="Unit_Click"  x:Name="Units"/>
+            </StackPanel>
+        </SplitView.Pane>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content ="Change" VerticalAlignment="Top" Click="HamburgerMenuReverse"/>
+                <CommandBar Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            DefaultLabelPosition="Right"
+                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                    <AppBarButton Label="Импортировать" Icon="Import" Click="ImportFromXMLFile"/>
+                    <AppBarButton Label="Загрузить" Icon="Download" Click="DownloadFromNetwork"/>
+                    <AppBarButton Label="Редактировать" Icon="Edit" Click="Edit_Elements"/>
+                    <AppBarButton Label="Добавить" Icon="Add" Click="AddNewElement"/>
+                </CommandBar>
+            </Grid>
+            <TextBox x:Name="linkBox" Width="200" Visibility="Collapsed"/>
+            <TextBlock Text="Выберите курс" Visibility="Collapsed" x:Name="ChooseUnitLabel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Нет уроков" Visibility="Collapsed" x:Name="NoLessonstLabel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ListView  SelectionMode = "None" IsItemClickEnabled = "True" ItemClick="Lesson_Click"  x:Name="Lessons">
+
+            </ListView>
+        </StackPanel>
+    </SplitView>
+</Page>

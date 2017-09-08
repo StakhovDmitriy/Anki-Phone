@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Anki.Pages.ElementInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anki.Pages"
+    xmlns:tables="using:Anki.Tables" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--Основной грид-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Сетка с элементами-->
+            <Grid Grid.Row="0" x:Name="TableOfComponents">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <StackPanel Grid.Row="1">
+                <Button x:Name="SaveElement" Height="50" HorizontalAlignment="Stretch" Click="Save">Сохранить</Button>
+                <Button x:Name="DeleteElement" Height="50" HorizontalAlignment="Stretch" Click="Delete">Удалить</Button>
+            </StackPanel>
+        </Grid>
+        <!--Выбор типа элемента-->
+        <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="ChooseTypeGrid" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <ComboBox x:Name="ClassSelection" HorizontalAlignment="Center" Height="100" Width="300">
+                    
+                </ComboBox>
+                <Button Click="Choose" HorizontalAlignment="Center" Height="100" Width="300">Добавить</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
